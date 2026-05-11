@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="validation.css">
+    <link rel="stylesheet" href="btn.css">
+    <script defer src="Validation2.js"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div id="form">
+            <h1>Create a teacher</h1>
+            <div class="input-control">
+                <label for="TeacherCode">Teacher Code</label>
+                <input type="text" id="TeacherCode" name="TeacherCode">
+                <div class="error"></div>
+            </div> 
+            <div class="input-control">
+                <label for="FullName">Full Name</label>
+                <input type="text" id="FullName" name="FullName">
+                <div class="error"></div>
+            </div> 
+            <div class="input-control">
+                <label for="Contact" >Contact</label>
+                <input type="text" id="Contact" name="Contact">
+                <div class="error"></div>
+            </div>
+
+            <button type="button" id="BtCreate">Create</button>
+            <div id="Msg" class="text-center"> Warning invalid input(s).</div>
+        </div>
+    </div>
+
+    <a href="/index.html" class="back-btn">← Back</a>
+    
+</body>
+</html>

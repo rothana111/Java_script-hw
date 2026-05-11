@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Commission Calculator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#e4e3e3;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+h2{
+    margin-bottom:20px;
+    color:#333;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+#result{
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    color:#222;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Commission function</h2>
+    <input type="number" id="sale" placeholder="Enter Sale Amount">
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+
+
+
+</div>
+
+<script>
+function calculate(){
+
+    let sale = document.getElementById("sale").value;
+
+    sale = Number(sale);
+
+    let commission = 0;
+
+    if(sale >= 6000000){
+        commission = sale * 0.10;
+    }
+    else if(sale >= 3000000){
+        commission = sale * 0.05;
+    }
+    else if(sale >= 1500000){
+        commission = sale * 0.03;
+    }
+    else{
+        commission = sale * 0.01;
+    }
+
+    document.getElementById("result").innerText =
+    "Commission: $" + commission.toFixed(2);
+}
+</script>
+
+</body>
+</html>

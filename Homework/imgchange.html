@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>images change</title>
+   <script src="/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="/css/bootstrap.min.css">
+   <style>
+    .control-btns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top:  15px;
+}
+
+.opacity-btn {
+    font-family: sans-serif;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.opacity-full {
+    background: #1c77cc;
+    color: white;
+}
+
+.opacity-half {
+    background: #1c77cc;
+    color: rgb(255, 255, 255);
+}
+
+.opacity-btn:hover {
+    transform: scale(1.05);
+}
+    
+   </style>
+ <script>
+        function imgChange(imgname){
+            document.getElementById('myImg'). src="/images/"+imgname+'.jpg';
+        }
+        function setOpacity(value) {
+            document.getElementById('myImg').style.opacity = value;
+        }
+    </script>
+</head>
+<body>
+   
+    <div class="container my-5">
+        <div class="text-center">
+            <img id="myImg" src="/images/1.jpg" width="400" height="500">
+                <div class="p-4">
+                    <button class="btn btn-outline-primary" onclick="imgChange(1)">PIC 1</button> |  <button class="btn btn-outline-success" onclick="imgChange(2)">PIC 2</button> | <button class="btn btn-outline-danger" onclick="imgChange(3)">PIC 3</button>
+                </div>
+        </div>
+
+        <div class="control-btns">
+    <button class="opacity-btn opacity-full" onclick="setOpacity(1)">Opacity : 100%</button>
+    <button class="opacity-btn opacity-half" onclick="setOpacity(0.5)">Opacity : 50%</button>
+</div>
+    </div>
+
+    
+</body>
+</html>

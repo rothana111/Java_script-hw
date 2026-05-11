@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change html style </title>
+</head>
+<style>
+    h3{
+        font-family: 'Open Sans', system-ui;
+        font-size: 20px;
+    }
+    .demo{
+        font: 1em sans-serif;
+        color: rgb(177, 170, 168);
+        font-weight: bold;
+    }
+    button{
+        background-color: rgb(184, 183, 183);
+        color: rgb(22, 22, 22);
+        border: #000000;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: rgb(108, 108, 203);
+        color: white;
+        text-shadow: 0 0 10px #fffdef;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <h3>Hello world</h3>
+        <button type="button" class="btn btn-primary" onclick="changeColor()"> click</button>
+        <hr>
+        <p class="demo">
+            P1: here we are...
+        </p>
+        <p class="demo">
+            P2: here we are...
+        </p>
+        <p class="demo">
+            P3: here we are...
+        </p>
+        <p class="demo">
+            P4: here we are...
+        </p>
+    </div>
+
+    <script>
+        function changeColor(){
+            const myItems = document.querySelectorAll(".demo");
+            for(let i=0 ; i<myItems.length; i++){
+                myItems[i].style.textDecoration = "underline";
+                myItems[i].style.color = "purple";
+            }
+        }
+    </script>
+</body>
+</html>

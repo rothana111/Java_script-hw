@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Validation Dashboard</title>
+    <link rel="stylesheet" href="btn.css">
+    <style>
+        body {
+            background-color: #aebff361;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+        h2 {
+            color: rgb(96, 100, 113);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .label-text {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .input-group {
+            display: flex;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        input {
+            flex: 1;
+            border: none;
+            padding: 12px;
+            outline: none;
+            font-size: 14px;
+            background: transparent;
+        }
+        button {
+            background: transparent;
+            border: none;
+            border-left: 1px solid #eee;
+            padding: 0 20px;
+            color: #5376d8;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #4f7ed4;
+            color: #ffffff;
+        }
+        .status-msg {
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            min-height: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Input Validation</h2>
+
+    <div class="dashboard">
+        <div class="card">
+            <span class="label-text">1. Any number (integer or decimal)</span>
+            <div class="input-group" id="group1">
+                <input type="text" id="txt1" placeholder="e.g. 1.23, 0, 456, -789">
+                <button onclick="validateBox1()">Check</button>
+            </div>
+            <div id="msg1" class="status-msg"></div>
+        </div>
+
+        <div class="card">
+            <span class="label-text">2. Positive number (Integer only)</span>
+            <div class="input-group" id="group2">
+                <input type="text" id="txt2" placeholder="e.g. 5, 689, 034">
+                <button onclick="validateBox2()">Check</button>
+            </div>
+            <div id="msg2" class="status-msg"></div>
+        </div>
+
+        <div class="card">
+            <span class="label-text">3. Decimal number (with dot)</span>
+            <div class="input-group" id="group3">
+                <input type="text" id="txt3" placeholder="e.g. 3.14, -0.001">
+                <button onclick="validateBox3()">Check</button>
+            </div>
+            <div id="msg3" class="status-msg"></div>
+        </div>
+
+        <div class="card">
+            <span class="label-text">4. Positive decimal</span>
+            <div class="input-group" id="group4">
+                <input type="text" id="txt4" placeholder="e.g. 2.5, 0.01">
+                <button onclick="validateBox4()">Check</button>
+            </div>
+            <div id="msg4" class="status-msg"></div>
+        </div>
+
+        <div class="card">
+            <span class="label-text">5. Email</span>
+            <div class="input-group" id="group5">
+                <input type="text" id="txt5" placeholder="example@gmail.com">
+                <button onclick="validateBox5()">Check</button>
+            </div>
+            <div id="msg5" class="status-msg"></div>
+        </div>
+
+        <div class="card">
+            <span class="label-text">6. Boolean (true/false, yes/no, 1/0)</span>
+            <div class="input-group" id="group6">
+                <input type="text" id="txt6" placeholder="true, yes, 1, no...">
+                <button onclick="validateBox6()">Check</button>
+            </div>
+            <div id="msg6" class="status-msg"></div>
+        </div>
+    </div>
+</div>
+
+<a href="/index.html" class="back-btn">← Back</a>
+
+<script>
+    
+    function handleUI(inputId, groupId, msgId, isValid, errorText) {
+        let inputGroup = document.getElementById(groupId);
+        let msg = document.getElementById(msgId);
+        let val = document.getElementById(inputId).value;
+
+        if (val.trim() === "") {
+            inputGroup.style.borderColor = "#cc7a00";
+            msg.innerHTML = "⚠️ Please enter a value";
+            msg.style.color = "#cc7a00";
+        } else if (isValid) {
+            inputGroup.style.borderColor = "green";
+            msg.innerHTML = "✅ Valid";
+            msg.style.color = "green";
+        } else {
+            inputGroup.style.borderColor = "red";
+            msg.innerHTML = errorText;
+            msg.style.color = "red";
+        }
+    }
+
+    
+    function validateBox1() {
+        let val = document.getElementById('txt1').value;
+        let ok = !isNaN(val) && val.trim() !== "";
+        handleUI('txt1', 'group1', 'msg1', ok, "X False - (allowed: 123, 0, 46733, -8688)");
+    }
+
+    function validateBox2() {
+        let val = document.getElementById('txt2').value;
+        let num = Number(val);
+        let ok = !isNaN(num) && num >= 0 && Number.isInteger(num);
+        handleUI('txt2', 'group2', 'msg2', ok, "X Invalid - (Positive whole numbers and only integer)");
+    }
+
+    function validateBox3() {
+        let val = document.getElementById('txt3').value;
+        let ok = /^-?\d+\.\d+$/.test(val);
+        handleUI('txt3', 'group3', 'msg3', ok, "X Invalid - (Must include a decimal point)");
+    }
+
+    function validateBox4() {
+        let val = document.getElementById('txt4').value;
+        let ok = /^\d+\.\d+$/.test(val);
+        handleUI('txt4', 'group4', 'msg4', ok, "X Invalid - (Positive decimals only)");
+    }
+
+    function validateBox5() {
+        let val = document.getElementById('txt5').value;
+        let ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        handleUI('txt5', 'group5', 'msg5', ok, "X Invalid - (Format: user@mail.com)");
+    }
+
+    function validateBox6() {
+        let val = document.getElementById('txt6').value.toLowerCase().trim();
+        let ok = ["true", "false", "yes", "no", "1", "0"].includes(val);
+        handleUI('txt6', 'group6', 'msg6', ok, "X Invalid - (true, false, yes, no, 1, 0)");
+    }
+</script>
+
+</body>
+</html>

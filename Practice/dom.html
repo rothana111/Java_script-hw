@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2</title>
+</head>
+<body>
+    <h3> Element-1 </h3>
+    <button type="button" onclick="alert('hello js')">Change 1</button>
+    <hr>
+    <h3> Element-2 </h3>
+    <button type="button" onclick="ChangeElement2()">Change 2</button>
+    <hr>
+    <div class="title"> Element-3 </div>
+    <button type="button" onclick="ChangeElement3()">Change 3</button>
+    
+    <hr>
+    <div id="title2">Element-4</div>
+    <button type="button" onclick="ChangeElement4()">Change 4</button>
+
+    <script>
+        function ChangeElement2(){
+            document.getElementsByTagName('h3')[1].innerHTML = "This is Element 2. ";
+
+        }
+        function ChangeElement3(){
+            document.getElementsByClassName('title')[0].innerHTML = "This is Element 3.";
+        }
+
+        function ChangeElement4(){
+            document.getElementById('title2').innerHTML = "This is Element 4";
+        }
+    </script>
+</body>
+</html>

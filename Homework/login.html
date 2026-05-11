@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Login</title>
+    <link rel="stylesheet" href="btn.css">
+<style>
+
+    body {
+        color: rgb(255, 255, 255);
+        background-color: #121212;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+    .login-card {
+        background: #1e1e1e;
+        padding: 30px;
+        border-radius: 20px;
+        width: 350px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        font-family: 'Segoe UI', sans-serif;
+        color: #fffefe;
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 25px;
+    }
+
+    .input-box {
+        border: 2px solid #333;
+        border-radius: 12px;
+        padding: 12px;
+        margin-bottom: 20px;
+        background-color: #1e1e1e;
+        transition: 0.3s;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0 1000px #1e1e1e inset;
+        -webkit-text-fill-color: #fff;
+    }
+    input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 100%;
+        box-sizing: border-box;
+        outline: none;
+        font-size: 16px;
+        color: #fffdfd;
+    }
+
+    .error-text {
+        color: #e57373;
+        font-size: 11px;
+        display: block;
+        margin-top: -15px;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    button {
+        text-align: center;
+        width: 350px;
+        padding: 15px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 14px;
+    }
+
+    button:hover {
+        background: #0056b3;;
+    }
+
+    .warning-msg {
+        color: #e57373;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 20px;
+        min-height: 20px;
+    }
+        
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h2>Registration</h2>
+        
+        <div class="input-box" id="groupUser">
+            <input type="text" id="txtUser" placeholder="Username">
+        </div>
+        <span class="error-text" id="msgUser"></span>
+        <br>
+        
+        <div class="input-box" id="groupEmail">
+            <input type="email" id="txtEmail" placeholder="Email Address">
+        </div>
+        <span class="error-text" id="msgEmail"></span>
+        <br>
+
+       
+        <div class="input-box" id="groupPass">
+            <input type="password" id="txtPass" placeholder="Password">
+        </div>
+        <span class="error-text" id="msgPass"></span>
+        <br>
+
+        
+        <div class="input-box" id="groupConfirm">
+            <input type="password" id="txtConfirm" placeholder="Confirm Password">
+        </div>
+        <span class="error-text" id="msgConfirm"></span>
+
+        <button onclick="validateLogin()">Sign Up</button>
+        
+        <p id="mainWarning" class="warning-msg"></p>
+    </div>
+
+    <a href="/index.html" class="back-btn">← Back</a>
+
+    <script>
+        function updateUI(id, ok) {
+    var box = document.getElementById(id);
+
+    if (ok == true) {
+        box.style.border = "2px solid green";
+        box.style.backgroundColor = "#1e1e1e";
+    } else {
+        box.style.border = "2px solid red";
+        box.style.backgroundColor = "#1e1e1e";
+    }
+}
+
+function validateLogin() {
+
+    var user = document.getElementById("txtUser").value;
+    var email = document.getElementById("txtEmail").value;
+    var pass = document.getElementById("txtPass").value;
+    var confirmPassword = document.getElementById("txtConfirm").value;
+
+    var msgUser = document.getElementById("msgUser");
+    var msgEmail = document.getElementById("msgEmail");
+    var msgPass = document.getElementById("msgPass");
+    var msgConfirm = document.getElementById("msgConfirm");
+    var mainWarning = document.getElementById("mainWarning");
+
+
+    var isUserOk;
+    if (user == "") {
+        isUserOk = false;
+        msgUser.innerHTML = "Username is required";
+    } else {
+        isUserOk = true;
+        msgUser.innerHTML = "";
+    }
+
+    
+    var isEmailOk;
+    if (email == "") {
+        isEmailOk = false;
+        msgEmail.innerHTML = "Email is required";
+    } else {
+        if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+            isEmailOk = false;
+            msgEmail.innerHTML = "Invalid email format";
+        } else {
+            isEmailOk = true;
+            msgEmail.innerHTML = "";
+        }
+    }
+
+    
+    var isPassOk;
+    if (pass == "") {
+        isPassOk = false;
+        msgPass.innerHTML = "Password is required";
+    } else {
+        if (pass.length >= 8) {
+            isPassOk = true;
+            msgPass.innerHTML = "";
+        } else {
+            isPassOk = false;
+            msgPass.innerHTML = "Must be at least 8 characters";
+        }
+    }
+
+    
+    var isMatchOk;
+
+    if (confirmPassword == "") {
+        isMatchOk = false;
+        msgConfirm.innerHTML = "Confirm password is required";
+    } 
+    else if (isPassOk == false) {
+        isMatchOk = false;
+        msgConfirm.innerHTML = "Fix password first";
+    } 
+    else if (confirmPassword == pass) {
+        isMatchOk = true;
+        msgConfirm.innerHTML = "";
+    } 
+    else {
+        isMatchOk = false;
+        msgConfirm.innerHTML = "Passwords do not match";
+    }
+
+    
+    updateUI("groupUser", isUserOk);
+    updateUI("groupEmail", isEmailOk);
+    updateUI("groupPass", isPassOk);
+    updateUI("groupConfirm", isMatchOk);
+
+    
+    if (isUserOk == true && isEmailOk == true && isPassOk == true && isMatchOk == true) {
+        mainWarning.style.color = "green";
+        mainWarning.innerHTML = "Success! Account Created.";
+    } else {
+        mainWarning.style.color = "red";
+        mainWarning.innerHTML = "Please fill in all fields correctly.";
+    }
+}
+    </script>
+</body>
+</html> 

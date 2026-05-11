@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Homework</title>
+    <link rel="stylesheet" href="btn.css">
+    <style>
+        body {
+            background-color: #d4dce9;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+        .card {
+            background: rgb(254, 254, 254);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 550px;
+        }
+        h3 {
+            color: #525050;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .input-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        input {
+            flex: 2;
+            padding: 15px;
+            border: 1px solid #7c7979;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            flex: 1.5;
+            padding: 10px;
+            background-color: #3b6cf1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #3471ff;
+        }
+        .status-msg {
+            flex: 1;
+            font-size: 14px;
+            font-weight: bold;
+            min-width: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h3>Please Test The Check Functions</h3>
+
+    <div class="input-row">
+        <input type="text" id="txt1" placeholder="string">
+        <button onclick="validateNumber()">Check Number</button>
+        <span id="msg1" class="status-msg"></span>
+    </div>
+
+    <div class="input-row">
+        <input type="text" id="txt2" placeholder="5,34,678">
+        <button onclick="validatePositive()">Check Positive Integer</button>
+        <span id="msg2" class="status-msg"></span>
+    </div>
+
+    <div class="input-row">
+        <input type="text" id="txt3" placeholder="3.14, -0.001">
+        <button onclick="validateDecimal()">Check Decimal</button>
+        <span id="msg3" class="status-msg"></span>
+    </div>
+
+    <div class="input-row">
+        <input type="text" id="txt4" placeholder="2.5, 0.01">
+        <button onclick="validatePosDecimal()">Check Positive Decimal</button>
+        <span id="msg4" class="status-msg"></span>
+    </div>
+
+    <div class="input-row">
+        <input type="text" id="txt5" placeholder="@domain.com">
+        <button onclick="validateEmail()">Check Email</button>
+        <span id="msg5" class="status-msg"></span>
+    </div>
+
+    <div class="input-row">
+        <input type="text" id="txt6" placeholder="true, false, yes, no, 1, 0">
+        <button onclick="validateBoolean()">Check Boolean</button>
+        <span id="msg6" class="status-msg"></span>
+    </div>
+</div>
+
+<a href="/index.html" class="back-btn">← Back</a>
+
+<script>
+
+    function checkNumber(str) {
+        return str.trim() !== "" && !isNaN(Number(str));
+    }
+
+    function checkPositive(str) {
+        let num = Number(str);
+        return Number.isInteger(num) && num > 0;
+    }
+
+    function checkDecimal(str) {
+        return /^-?\d+\.\d+$/.test(str);
+    }
+
+    function checkPosDecimal(str) {
+        return /^\d+\.\d+$/.test(str);
+    }
+
+    function checkEmail(str) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
+    }
+
+    function checkBoolean(str) {
+        let v = str.toLowerCase().trim();
+        return ["true", "false", "yes", "no", "1", "0"].includes(v);
+    }
+
+
+    function handleUI(inputId, msgId, isValid) {
+        let input = document.getElementById(inputId);
+        let msg = document.getElementById(msgId);
+        
+        
+    if (input.value.trim() === "") {
+        input.style.border = "1px solid #cc7a00"; 
+        msg.innerHTML = "⚠️ Please Enter value";
+        msg.style.color = "orange";
+    } 
+    
+    else if (isValid) {
+        input.style.border = "1px solid green";
+        msg.innerHTML = "✅ Valid";
+        msg.style.color = "green";
+    } 
+    
+    else {
+        input.style.border = "1px solid red";
+        msg.innerHTML = "❌ Invalid";
+        msg.style.color = "red";
+    }
+    }
+
+    function validateNumber() {
+        let val = document.getElementById('txt1').value;
+        handleUI('txt1', 'msg1', checkNumber(val));
+    }
+
+    function validatePositive() {
+        let val = document.getElementById('txt2').value;
+        handleUI('txt2', 'msg2', checkPositive(val));
+    }
+
+    function validateDecimal() {
+        let val = document.getElementById('txt3').value;
+        handleUI('txt3', 'msg3', checkDecimal(val));
+    }
+
+    function validatePosDecimal() {
+        let val = document.getElementById('txt4').value;
+        handleUI('txt4', 'msg4', checkPosDecimal(val));
+    }
+
+    function validateEmail() {
+        let val = document.getElementById('txt5').value;
+        handleUI('txt5', 'msg5', checkEmail(val));
+    }
+
+    function validateBoolean() {
+        let val = document.getElementById('txt6').value;
+        handleUI('txt6', 'msg6', checkBoolean(val));
+    }
+</script>
+
+</body>
+</html>

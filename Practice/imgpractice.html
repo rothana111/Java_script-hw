@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script Practice changing img </title>
+    <script type="text/javascript">
+
+        function change_image(image)
+        {
+            document.getElementById("myImage").src="/images/"+image+".jpg";
+        }
+        function Change_border(border_size)
+        {
+            document.getElementById("myImage").border=border_size;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <p><img src="/images/7.jpg" width="450" height="" id="myImage"></p>
+        <p>Picture( <a href="#top" onclick="change_image(7)">1</a> | <a href="#top" onclick="change_image(4)">2</a> | <a href="#top" onclick="change_image(5)">3</a> | <a href="#top" onclick="change_image(6)">4</a> )</p>
+        <p> Border ( <a href="#" onclick="Change_border(0)">None</a> | <a href="#" onclick="Change_border(9)">Small</a> | <a href="#" onclick="Change_border(10)">Medium</a> | <a href="#" onclick="Change_border(11)">Large</a> ) </p>
+
+    </center>
+</body>
+</html>

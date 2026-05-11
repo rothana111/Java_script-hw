@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  DOM HTML  </title>
+</head>
+
+<body>
+    <h3>Element-1</h3>
+    <button type="button" onclick="alert('Hello World')"> change 1</button>
+    <hr>
+
+    <h3>Element-2</h3>
+    <button type="button" onclick="changeElement2()">Change 2</button>
+    <hr><br>
+    <div class="title">Element-3
+    <button type="button" onclick="changeElement3()">Change 3</button><br><br>
+    </div>
+    <hr><br>
+    <div id="title2">Element-4
+    <button type="button" onclick="changeElement4()">Change 4</button>
+    </div>
+    
+</body>
+
+<script>
+    function changeElement2() {
+        document.getElementsByTagName("h3")[1].innerHTML = "the second element has been changed";
+    }
+    function changeElement3(){
+        document.getElementsByClassName("title")[0].innerHTML="the third element also changed";
+    }
+    function changeElement4(){
+        document.getElementById("title2").innerHTML="the 4th one is also changing";
+    }
+
+</script>
+</html>
