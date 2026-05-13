@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>images change</title>
-   <script src="/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="/css/bootstrap.min.css">
+   <script src="js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
    <style>
     .control-btns {
     display: flex;
@@ -41,7 +41,7 @@
    </style>
  <script>
         function imgChange(imgname){
-            document.getElementById('myImg'). src="/images/"+imgname+'.jpg';
+            document.getElementById('myImg'). src="images/"+imgname+'.jpg';
         }
         function setOpacity(value) {
             document.getElementById('myImg').style.opacity = value;
@@ -52,7 +52,7 @@
    
     <div class="container my-5">
         <div class="text-center">
-            <img id="myImg" src="/images/1.jpg" width="400" height="500">
+            <img id="myImg" src="images/1.jpg" width="400" height="500">
                 <div class="p-4">
                     <button class="btn btn-outline-primary" onclick="imgChange(1)">PIC 1</button> |  <button class="btn btn-outline-success" onclick="imgChange(2)">PIC 2</button> | <button class="btn btn-outline-danger" onclick="imgChange(3)">PIC 3</button>
                 </div>
