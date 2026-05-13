@@ -51,19 +51,20 @@
 <body>
    
     <div class="container my-5">
-        <div class="text-center">
-            <img id="myImg" src="../images/1.jpg" width="400" height="500">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <img id="myImg" src="../images/1.jpg" width="400" height="500">
                 <div class="p-4">
                     <button class="btn btn-outline-primary" onclick="imgChange(1)">PIC 1</button> |  <button class="btn btn-outline-success" onclick="imgChange(2)">PIC 2</button> | <button class="btn btn-outline-danger" onclick="imgChange(3)">PIC 3</button>
                 </div>
-        </div>
 
-        <div class="control-btns">
-    <button class="opacity-btn opacity-full" onclick="setOpacity(1)">Opacity : 100%</button>
-    <button class="opacity-btn opacity-half" onclick="setOpacity(0.5)">Opacity : 50%</button>
-</div>
+                <div class="control-btns">
+                    <button class="opacity-btn opacity-full" onclick="setOpacity(1)">Opacity : 100%</button>
+                    <button class="opacity-btn opacity-half" onclick="setOpacity(0.5)">Opacity : 50%</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    
 </body>
 </html>
