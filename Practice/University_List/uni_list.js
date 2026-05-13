@@ -1,4 +1,4 @@
-const API_URL = "http://universities.hipolabs.com/search?country=cambodia";
+const API_URL = "https://universities.hipolabs.com/search?country=cambodia";
 
 let deleteId = null;
 let universityData = [];
